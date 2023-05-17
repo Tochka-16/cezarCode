@@ -3,12 +3,12 @@ text = list(input('Введите текст, которое хотите заш
 key = input('Введите ключ (значение сдвига): ')
 
 
-def cezarCode ():
+def cezarCode (language, text, key):
     res = []
     
     if language == 'rus':
-        RUS_ALPHABET_lower = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
-        RUS_ALPHABET_upper = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
+        RUS_ALPHABET_lower, RUS_ALPHABET_upper = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя', 
+        'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
         N = 33
 
         for i in text:
@@ -17,22 +17,21 @@ def cezarCode ():
                 for a in list(RUS_ALPHABET_lower):
                     if i == a:
                         try:
-                            res.append(list(RUS_ALPHABET_lower)[list(RUS_ALPHABET_lower).index(a) + int(key)])
+                            res.append(RUS_ALPHABET_lower[RUS_ALPHABET_lower.index(a) + int(key)])
                         except IndexError:
-                            index = int(key) - (N - list(RUS_ALPHABET_lower).index(a))
-                            res.append(list(RUS_ALPHABET_lower)[index])
-                                       
+                            index = int(key) - (N - RUS_ALPHABET_lower.index(a))
+                            res.append(RUS_ALPHABET_lower[index])
+
             elif i == i.upper():
                 for b in list(RUS_ALPHABET_upper):
                     if i == b:
                         try:
-                            res.append(list(RUS_ALPHABET_upper)[list(RUS_ALPHABET_upper).index(b) + int(key)])
+                            res.append(RUS_ALPHABET_upper[RUS_ALPHABET_upper.index(b) + int(key)])
                         except IndexError:
-                            index = int(key) - (N - list(RUS_ALPHABET_upper).index(b))
-                            res.append(list(RUS_ALPHABET_upper)[index])
+                            index = int(key) - (N - RUS_ALPHABET_upper.index(b))
+                            res.append(RUS_ALPHABET_upper[index])
 
-            elif i not in list(RUS_ALPHABET_lower) and list(RUS_ALPHABET_upper):
-                res.append(i)               
+                          
 
     elif language == 'eng':
         ENG_ALPHABET_lower = 'abcdefghijklmnopqrstuvwxyz'
